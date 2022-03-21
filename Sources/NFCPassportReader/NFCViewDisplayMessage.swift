@@ -55,3 +55,54 @@ extension NFCViewDisplayMessage {
         return "\(full)\(empty)"
     }
 }
+
+/*
+//
+//  NFCViewDisplayMessage.swift
+//  NFCPassportReader
+//
+//  Created by Andy Qua on 09/02/2021.
+//
+
+import Foundation
+
+@available(iOS 13, macOS 10.15, *)
+public enum NFCViewDisplayMessage {
+    case requestPresentPassport
+    case authenticatingWithPassport(Int)
+    case readingDataGroupProgress(DataGroupId, Int)
+    case error(NFCPassportReaderError)
+    case successfulRead
+    case successfulAuth
+}
+
+@available(iOS 13, macOS 10.15, *)
+extension NFCViewDisplayMessage {
+    public var description: String {
+        switch self {
+            case .requestPresentPassport:
+                return NSLocalizedString("Hold your iPhone near an NFC enabled passport", comment: "")
+            case .authenticatingWithPassport(let progress):
+                let progressString = handleProgress(percentualProgress: progress)
+                return "Authenticating with passport.....\n\n\(progressString)"
+            case .readingDataGroupProgress(let dataGroup, let progress):
+                let progressString = handleProgress(percentualProgress: progress)
+                return "Reading \(dataGroup).....\n\n\(progressString)"
+            case .error(let tagError):
+            return NSLocalizedString(tagError.value, comment: "")
+            case .successfulRead:
+                return NSLocalizedString("Document read successfully", comment: "")
+            case .successfulAuth:
+                return NSLocalizedString("Successful", comment: "")
+        }
+    }
+    
+    func handleProgress(percentualProgress: Int) -> String {
+        let p = (percentualProgress/20)
+        let full = String(repeating: "🟢 ", count: p)
+        let empty = String(repeating: "⚪️ ", count: 5-p)
+        return "\(full)\(empty)"
+    }
+}
+
+*/
