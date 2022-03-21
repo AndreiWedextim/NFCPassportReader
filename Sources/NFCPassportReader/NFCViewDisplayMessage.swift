@@ -14,6 +14,7 @@ public enum NFCViewDisplayMessage {
     case readingDataGroupProgress(DataGroupId, Int)
     case error(NFCPassportReaderError)
     case successfulRead
+    case successfulAuth
 }
 
 @available(iOS 13, macOS 10.15, *)
@@ -40,6 +41,8 @@ extension NFCViewDisplayMessage {
                         return "MRZ Key not valid for this document."
                     case NFCPassportReaderError.ResponseError(let description, let sw1, let sw2):
                         return "Sorry, there was a problem reading the passport. \(description) - (0x\(sw1), 0x\(sw2)"
+                    case .successfulAuth:
+                        return NSLocalizedString("Successful", comment: "")
                     default:
                         return "Sorry, there was a problem reading the passport. Please try again"
                 }
