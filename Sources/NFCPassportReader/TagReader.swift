@@ -758,7 +758,7 @@ public class TagReader {
             if let error = error {
                 Log.error( "TagReader - Error reading tag - \(error.localizedDescription))" )
                 if error.localizedDescription == "Tag connection lost" {
-                    //completed( nil, NFCPassportReaderError.TagConnectionLost)
+                    completed( nil, NFCPassportReaderError.TagConnectionLost)
                 } else {
                     completed( nil, NFCPassportReaderError.ResponseError(error.localizedDescription, sw1, sw2 ))
                 }
