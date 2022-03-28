@@ -21,6 +21,7 @@ public class Log {
     public static var logLevel : LogLevel = .info
     public static var storeLogs = false
     public static var logData = [String]()
+    public static var logDelegate: ((String) -> ())?
 
     public class func verbose( _ msg : @autoclosure () -> String ) {
         log( .verbose, msg )
@@ -43,12 +44,13 @@ public class Log {
     }
     
     class func log( _ logLevel : LogLevel, _ msg : () -> String ) {
-        if self.logLevel.rawValue <= logLevel.rawValue {
+        if (logLevel.rawValue == Log.logLevel.rawValue || logLevel.rawValue == LogLevel.error.rawValue) {
             let message = msg()
-            print( message )
             
-            if storeLogs {
-                logData.append( message )
+            if let logDelegate = logDelegate {
+                logDelegate(message)
+            } else {
+                print(message)
             }
         }
     }

@@ -78,7 +78,7 @@ public class BACHandler {
                     do {
                         let (KSenc, KSmac, ssc) = try self.sessionKeys(data: [UInt8](response.data))
                         tagReader.secureMessaging = SecureMessaging(ksenc: KSenc, ksmac: KSmac, ssc: ssc)
-                        Log.debug( "BACHandler - complete" )
+                        Log.info( "BACHandler - complete" )
                         completed( nil)
                     } catch {
                         Log.error( "ERROR - \(error.localizedDescription)" )

@@ -96,7 +96,7 @@ public class PACEHandler {
             paceKey = try createPaceKey( from: mrzKey )
             
             // Temporary logging
-            Log.verbose("doPace - inpit parameters" )
+            Log.verbose("doPace - input parameters" )
             Log.verbose("paceOID - \(paceOID)" )
             Log.verbose("parameterSpec - \(parameterSpec)" )
             Log.verbose("mappingType - \(mappingType!)" )
